@@ -2,12 +2,12 @@
   (display n)
   (start-prime-test n (system-clock)))
 
-(define (start-prime-test n start-time)		
-  (if (prime? n)	
+(define (start-prime-test n start-time)   
+  (if (prime? n)  
       (begin 
-      	(report-prime (- (system-clock) start-time))
-      	#t)
-	   #f))
+        (report-prime (- (system-clock) start-time))
+        #t)
+     #f))
 
 (define (report-prime elapsed-time)
   (display " *** ")
@@ -19,9 +19,9 @@
 (define (find-divisor n test-divisor)
   (cond ((> (square test-divisor) n) n)
         ((divides? test-divisor n) test-divisor)
-    	(else (find-divisor n (+ test-divisor 1)))))
+      (else (find-divisor n (+ test-divisor 1)))))
 
-(define (divides? a b)	
+(define (divides? a b)  
   (= (remainder b a) 0))
 
 (define (prime? n)
@@ -32,19 +32,19 @@
   (smallest-iter 0 n))
 
 (define (smallest-iter count n)
-  (newline)	
+  (newline) 
   ; If i dont make this do something, the times are too small.
   (if (< count 3)
       (if (timed-prime-test n) 
-      	(smallest-iter (+ 1 count) (+ 2 n))
-      	(smallest-iter count (+ 2 n)))))
+        (smallest-iter (+ 1 count) (+ 2 n))
+        (smallest-iter count (+ 2 n)))))
 
  ;(display n)
- ; (newline)	
+ ; (newline)  
  ; (if (< count 3)
  ;     (if (prime? n) 
- ;     	(begin 
- ;     		(timed-prime-test n)
- ;     		(smallest-iter (+ 1 count) (+ 2 n)))
- ;     	(smallest-iter count (+ 2 n)))))
+ ;      (begin 
+ ;        (timed-prime-test n)
+ ;        (smallest-iter (+ 1 count) (+ 2 n)))
+ ;      (smallest-iter count (+ 2 n)))))
 

@@ -22,7 +22,8 @@
 
 ; b - total weight of a mobile (tree)
 (define (total-weight mobile)
-	(+ (branch-weight (left-branch mobile)) (branch-weight (right-branch mobile))))
+    (+ (branch-weight (left-branch mobile)) 
+       (branch-weight (right-branch mobile))))
 
 (define (branch-weight branch)
   (cond ((mobile? branch) (total-weight (branch-structure branch)))
@@ -31,19 +32,19 @@
 ; c - check if the tree is balanced
 (define (balanced? mobile)
   (and (weights-balance? mobile)
-  	   (branch-balanced? (left-branch mobile))
-  	   (branch-balanced? (right-branch mobile))))
+       (branch-balanced? (left-branch mobile))
+       (branch-balanced? (right-branch mobile))))
 
 (define (weights-balance? mobile)
   (= (* (branch-weight (left-branch mobile))
-  		(branch-length (left-branch mobile)))
-  	 (* (branch-weight (right-branch mobile))
-  		(branch-length (right-branch mobile)))))
+        (branch-length (left-branch mobile)))
+     (* (branch-weight (right-branch mobile))
+        (branch-length (right-branch mobile)))))
 
 (define (branch-balanced? branch)
-  (if (mobile? branch)		
-       (balanced? (branch-structure branch))
-       #t))
+  (if (mobile? branch)      
+      (balanced? (branch-structure branch))
+      #t))
 
 (define (mobile? branch)
   (pair? (branch-structure branch)))

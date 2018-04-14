@@ -1,4 +1,4 @@
-(define (good-enough? guess x)	
+(define (good-enough? guess x)  
   (< (abs (- (* guess guess) x)) 0.001))
 
 (define (average x y)
@@ -9,11 +9,11 @@
 
 
 (define (sqrt-iter guess x)
-	(if (good-enough? guess x)	
-	    guess	
-	    (sqrt-iter (improve guess x)
-	    			x)))
-	    	
+  (if (good-enough? guess x)  
+      guess 
+      (sqrt-iter (improve guess x)
+            x)))
+        
 (define (sqrt x)
   (sqrt-iter 1.0 x))
 
@@ -26,10 +26,10 @@
   (new-sqrt-iter 1.0 x))
 
 (define (new-sqrt-iter guess x)
-	(new-if (good-enough? guess x)	
-	    guess	
-	    (sqrt-iter (improve guess x)
-	    			x)))
+  (new-if (good-enough? guess x)  
+      guess 
+      (sqrt-iter (improve guess x)
+            x)))
 
 ; ** 1.8
 (define (cube-root x)

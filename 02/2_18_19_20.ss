@@ -6,7 +6,7 @@
   (* x x))
 
 ; 2.17 - Last Pair
-(define (last-pair list)	
+(define (last-pair list)  
   (if (null? (cdr list))
       (car list)
       (last-pair (cdr list))))
@@ -26,9 +26,9 @@
 
 ; 2.20 - Same Parity 
 (define (same-parity . ns)
-	(define (parity-rec n list ret)
-		(cond ((null? list) ret)
-		      ((= (modulo n 2) (modulo (car list) 2)) 
-		      		(parity-rec n (cdr list) (cons (car list) ret)))
-		  	  (else (parity-rec n (cdr list) ret))))
-	(reverse (parity-rec (car ns) ns ())))
+  (define (parity-rec n list ret)
+    (cond ((null? list) ret)
+          ((= (modulo n 2) (modulo (car list) 2)) 
+              (parity-rec n (cdr list) (cons (car list) ret)))
+          (else (parity-rec n (cdr list) ret))))
+  (reverse (parity-rec (car ns) ns ())))

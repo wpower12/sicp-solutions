@@ -19,10 +19,10 @@
 
 (define (simp-rule f a b n)
   (let ((h (/ (- b a) 2)) )
-  	(define (simp-odd x)  (* 4 (f (+ a (* h x)))))
-	(define (simp-even x) (* 2 (f (+ a (* h x)))))
-  	(* (/ h 3.0) 
-  	   (+ (f a)
-  	   	  (f b)
-  	   	  (sum simp-odd  1 add-2 (- b 1)) 	 ; odd sum, starting at 1  4*f
-  	   	  (sum simp-even 2 add-2 (- b 2)))))) ; even sum, starting at 2 2*f
+    (define (simp-odd x)  (* 4 (f (+ a (* h x)))))
+  (define (simp-even x) (* 2 (f (+ a (* h x)))))
+    (* (/ h 3.0) 
+       (+ (f a)
+          (f b)
+          (sum simp-odd  1 add-2 (- b 1))    ; odd sum, starting at 1  4*f
+          (sum simp-even 2 add-2 (- b 2)))))) ; even sum, starting at 2 2*f
