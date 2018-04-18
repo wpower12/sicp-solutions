@@ -1,26 +1,16 @@
 ; 2.29 - Balancing Binary Mobiles
 
-; constructors
-(define (make-mobile left right)
-  (list left right))
-
-(define (make-branch length structure)
-  (list length structure))
+; i - constructors 
+(define (make-mobile left right) (list left right))
+(define (make-branch length structure) (list length structure))
 
 ; a - selectors
-(define (left-branch mobile)
-  (car mobile))
+(define (left-branch  mobile) (car mobile))
+(define (right-branch mobile) (cadr mobile))
+(define (branch-length    branch) (car branch))
+(define (branch-structure branch) (cadr branch))
 
-(define (right-branch mobile)
-  (car (cdr mobile)))
-
-(define (branch-length branch)
-  (car branch))
-
-(define (branch-structure branch)
-  (car (cdr branch)))
-
-; b - total weight of a mobile (tree)
+; b - total weight of a mobile 
 (define (total-weight mobile)
     (+ (branch-weight (left-branch mobile)) 
        (branch-weight (right-branch mobile))))
@@ -29,7 +19,9 @@
   (cond ((mobile? branch) (total-weight (branch-structure branch)))
         (else (branch-structure branch))))
 
-; c - check if the tree is balanced
+(define (mobile? branch) (pair? (branch-structure branch)))
+
+; c - check if a mobile is balanced
 (define (balanced? mobile)
   (and (weights-balance? mobile)
        (branch-balanced? (left-branch mobile))
@@ -45,9 +37,6 @@
   (if (mobile? branch)      
       (balanced? (branch-structure branch))
       #t))
-
-(define (mobile? branch)
-  (pair? (branch-structure branch)))
 
 ; testing
 (define branch-1 (make-branch 4 1))

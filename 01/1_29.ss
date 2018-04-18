@@ -20,7 +20,7 @@
 (define (simp-rule f a b n)
   (let ((h (/ (- b a) 2)) )
     (define (simp-odd x)  (* 4 (f (+ a (* h x)))))
-  (define (simp-even x) (* 2 (f (+ a (* h x)))))
+    (define (simp-even x) (* 2 (f (+ a (* h x)))))
     (* (/ h 3.0) 
        (+ (f a)
           (f b)
